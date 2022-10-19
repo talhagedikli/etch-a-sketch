@@ -2,6 +2,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: black;
 }
 
 .container {
@@ -12,11 +13,11 @@ body {
 }
 
 .cell {
-  border: 1px solid black;
+  border: 1px solid white;
   width: 32px;
   height: 32px;
 }
 
 .row {
-  border: 1px solid goldenrod;
+
 }

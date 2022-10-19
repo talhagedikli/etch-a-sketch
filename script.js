@@ -1,5 +1,5 @@
 const container = document.querySelector('.container');
-let cells = document.getElementsByClassName('cell');
+const cells = document.getElementsByClassName('cell');
 let rows = document.getElementsByClassName('row');
 
 
@@ -22,14 +22,15 @@ function createTable(size) {
     }
 }
 
-function changeColor(color) {
+function changeColor(e, color) {
     alert(this);
 }
 
+createTable(16);
+
+
 for (let i = 0; i < cells.length; i++) {
-    cells[i].addEventListener('click', (e) => {
-        alert('here');
+    cells[i].addEventListener('mouseover', (e) => {
+        e.target.style.backgroundColor = 'black';;
     })
 }
-
-createTable(16);
