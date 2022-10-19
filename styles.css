@@ -1,0 +1,22 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background-color: rgb(212, 212, 212);
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.cell {
+  border: 1px solid black;
+  width: 32px;
+  height: 32px;
+}
+
+.row {
+  border: 1px solid goldenrod;
+}
