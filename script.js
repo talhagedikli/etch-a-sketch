@@ -2,11 +2,12 @@ const container = document.querySelector('.container');
 let cells = document.getElementsByClassName('cell');
 let rows = document.getElementsByClassName('row');
 const sizeButton = document.querySelector('button');
+const maxSize = 16;
 
 sizeButton.addEventListener('click', () => {
     deleteCells();
-    let size = Number(prompt('enter the size'));
-    createTable(Math.min(size, 16));
+    let size = Number(prompt(`enter the size (max ${maxSize})));
+    createTable(Math.min(size, maxSize));
     addEventsToCells();
 })
 
