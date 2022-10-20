@@ -2,11 +2,25 @@ const container = document.querySelector('.container');
 let cells = document.getElementsByClassName('cell');
 let rows = document.getElementsByClassName('row');
 const sizeButton = document.querySelector('button');
-const maxSize = 16;
+const maxSize = 32;
+
+const defaultColor = '#000000';
+let drawColor = defaultColor;
+const colorPicker = document.querySelector("#drawColor");
+colorPicker.value = defaultColor;
+
+let draw = false;
+
+
+function updateColor(event) {
+
+    drawColor = event.target.value;
+}
+
 
 sizeButton.addEventListener('click', () => {
     deleteCells();
-    let size = Number(prompt(`enter the size (max ${maxSize})`));
+    let size = Number(prompt(`enter the canvas size (max ${maxSize})`));
     createTable(Math.min(size, maxSize));
     addEventsToCells();
 })
@@ -37,9 +51,14 @@ function changeColor(e, color) {
 
 function addEventsToCells() {
   for (let i = 0; i < cells.length; i++) {
-      cells[i].addEventListener('mouseover', (e) => {
-          e.target.style.backgroundColor = 'black';
-      })
+    cells[i].addEventListener('mouseover', (e) => {
+        if (!draw) return;
+        e.target.style.backgroundColor = drawColor;
+    })
+    cells[i].addEventListener('mousedown', (e) => {
+        e.target.style.backgroundColor = drawColor;
+    })
+
   }
 }
 
@@ -51,3 +70,14 @@ function deleteCells() {
 
 createTable(16);
 addEventsToCells();
+
+window.addEventListener("mousedown", function(){
+    draw = true
+})
+// Set draw to false when the user release the mouse
+window.addEventListener("mouseup", function(){
+    draw = false
+})
+
+colorPicker.addEventListener('change', updateColor, false);
+colorPicker.select();
