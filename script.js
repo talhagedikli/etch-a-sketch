@@ -1,6 +1,14 @@
 const container = document.querySelector('.container');
-const cells = document.getElementsByClassName('cell');
+let cells = document.getElementsByClassName('cell');
 let rows = document.getElementsByClassName('row');
+const sizeButton = document.querySelector('button');
+
+sizeButton.addEventListener('click', () => {
+    deleteCells();
+    let size = Number(prompt('enter the size'));
+    createTable(size);
+    addEventsToCells();
+})
 
 
 function createRows(num) {
@@ -23,14 +31,22 @@ function createTable(size) {
 }
 
 function changeColor(e, color) {
-    alert(this);
+    e.target.style.backgroundColor = color;
+}
+
+function addEventsToCells() {
+  for (let i = 0; i < cells.length; i++) {
+      cells[i].addEventListener('mouseover', (e) => {
+          e.target.style.backgroundColor = 'black';
+      })
+  }
+}
+
+function deleteCells() {
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
 }
 
 createTable(16);
-
-
-for (let i = 0; i < cells.length; i++) {
-    cells[i].addEventListener('mouseover', (e) => {
-        e.target.style.backgroundColor = 'black';;
-    })
-}
+addEventsToCells();
