@@ -6,7 +6,7 @@ const sizeButton = document.querySelector('button');
 sizeButton.addEventListener('click', () => {
     deleteCells();
     let size = Number(prompt('enter the size'));
-    createTable(size);
+    createTable(Math.min(size, 16));
     addEventsToCells();
 })
 
