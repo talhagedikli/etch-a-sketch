@@ -6,7 +6,7 @@ const maxSize = 16;
 
 sizeButton.addEventListener('click', () => {
     deleteCells();
-    let size = Number(prompt(`enter the size (max ${maxSize})));
+    let size = Number(prompt(`enter the size (max ${maxSize})`));
     createTable(Math.min(size, maxSize));
     addEventsToCells();
 })
